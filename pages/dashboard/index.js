@@ -1,9 +1,9 @@
 import { useSession } from "next-auth/react";
 
-const Home = () => {
+const Dahsboard = () => {
   const { data: session, status } = useSession();
   console.log("SESSION", session);
-  return <div className="flex flex-wrap"></div>;
+  return <div>index</div>;
 };
 
-export default Home;
+export default Dahsboard;
