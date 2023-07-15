@@ -3,7 +3,7 @@ services:
   patisserie-database:
     image: "postgres:latest"
     ports:
-      - 5432:5432
+      - 5437:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
