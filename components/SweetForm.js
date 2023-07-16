@@ -29,7 +29,6 @@ const SweetForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       await axios.post("/api/sweets", data);
       handleReset();
       setSubmission("Sweet successfully created");

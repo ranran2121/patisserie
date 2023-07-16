@@ -4,7 +4,7 @@ import img from "../assets/general_cake.jpeg";
 
 const Sweet = ({ sweet }) => {
   const { name, price, discount } = sweet;
-  console.log(discount);
+
   return (
     <div className="border-2 border-orange-500 rounded-2xl mx-4 my-2 p-4 bg-orange-300 w-60 h-56 flex flex-col content-center text-center">
       <div>
