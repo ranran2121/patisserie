@@ -35,10 +35,10 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className="container flex flex-col justify-center mx-auto content-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-center my-6 "
+        className="flex flex-col items-center"
       >
         <div className="input-div">
           <label htmlFor="email" className="profile-form-label">

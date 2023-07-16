@@ -23,8 +23,12 @@ body {
   @apply underline;
 }
 
+.container {
+  @apply md:min-h-[581px];
+}
+
 .input-div {
-  @apply my-4 flex flex-row items-center w-[90%] md:w-[40%] justify-between;
+  @apply my-4 flex flex-row items-center w-[90%] md:w-[50%] justify-between;
 }
 
 .form-control {
