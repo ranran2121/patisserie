@@ -1,5 +1,5 @@
 import SweetForm from "@/components/SweetForm";
-import { useSession, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 const Dashboard = () => {
   return (

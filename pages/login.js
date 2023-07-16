@@ -9,10 +9,12 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
+    setError(false);
     try {
       const result = await signIn("credentials", {
         email: data.email.trim(),
@@ -22,17 +24,19 @@ const Login = () => {
 
       if (result.error) {
         setError(true);
+        return;
       } else {
         router.push("/dashboard");
       }
     } catch (error) {
       setError(true);
+    } finally {
+      reset({
+        email: "",
+        password: "",
+      });
     }
   };
-
-  if (error) {
-    return <p>Not AUthorized</p>;
-  }
 
   return (
     <div className="container flex flex-col justify-center mx-auto content-center">
@@ -72,6 +76,11 @@ const Login = () => {
           <small className="form-text text-danger">
             this field is required
           </small>
+        )}
+        {error && (
+          <div className="bg-orange-300 p-4 capitalize">
+            email or password wrong
+          </div>
         )}
         <div className="my-4">
           <button className="btn" type="submit">
