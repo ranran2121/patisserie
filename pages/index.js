@@ -7,7 +7,7 @@ const Home = (props) => {
 
   return (
     <div className="flex flex-wrap content-center justify-center md:min-h-[581px]">
-      {sweets &&
+      {sweets.length > 0 &&
         sweets.map((sweet) => {
           return (
             <div key={sweet.id}>
