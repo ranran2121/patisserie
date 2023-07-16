@@ -1,12 +1,13 @@
-import { getSession, getServerSession } from "next-auth/react";
+import { authOptions } from "./auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
 import { createSweet } from "../../lib/sweets_crud";
 
 export default async function handler(req, res) {
-  const session = await getSession({ req });
-  console.log("SEE", session);
-  /* if (!session) {
+  const session = await getServerSession(req, res, authOptions);
+
+  if (!session) {
     return res.status(401).json("unauthorized");
-  } */
+  }
 
   switch (req.method) {
     case "POST":
