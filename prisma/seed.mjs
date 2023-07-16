@@ -1,11 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 import { admins } from "./admins.mjs";
 import { sweets } from "./sweets.mjs";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
   for (let i = 0; i < admins.length; i++) {
+    const hashedPwd = await bcrypt.hash(admins[i].password, 10);
     await prisma.admin.upsert({
       where: { id: admins[i].id },
       update: {},
@@ -13,7 +15,7 @@ async function main() {
         id: admins[i].id,
         name: admins[i].name,
         email: admins[i].email,
-        password: admins[i].password,
+        password: hashedPwd,
       },
     });
   }
