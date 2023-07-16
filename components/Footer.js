@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <footer className="h-10 bg-orange-500 text-white text-center absolute bottom-0 left-0 w-full">
+    <footer className="h-10 bg-orange-500 text-white text-center w-full">
       Do you like the website?
       <a
         href="mailto:m.hacke@example.com"

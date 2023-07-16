@@ -13,7 +13,7 @@ const Navbar = () => {
   }
 
   return (
-    <ul className="flex flex-row justify-center">
+    <ul className="flex flex-row justify-center text-white">
       {/* <li className={`m-2 ${isActive(ROUTES.sweets)}`}>
         <Link href={ROUTES.home}>Sweets</Link>
       </li> */}

@@ -4,7 +4,7 @@ import img from "../assets/logo.jpeg";
 
 const Header = () => {
   return (
-    <div className="flex flex-col items-center p-12 bg-orange-400 h-fit">
+    <header className="flex flex-col items-center p-12 bg-orange-400 h-fit">
       <Image
         src={img}
         alt="logo"
@@ -17,7 +17,7 @@ const Header = () => {
         Mary & Anne&apos;s patisserie
       </h1>
       <Navbar />
-    </div>
+    </header>
   );
 };
 
