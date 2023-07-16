@@ -15,7 +15,10 @@ const Home = (props) => {
             </div>
           );
         })}
-      {!sweets && <p>working</p>}
+      {!sweets ||
+        (sweets.length == 0 && (
+          <p className="capitalize">Baking in progress</p>
+        ))}
     </div>
   );
 };
