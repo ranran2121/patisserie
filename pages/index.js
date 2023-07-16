@@ -26,12 +26,13 @@ const Home = (props) => {
 export default Home;
 
 export async function getServerSideProps(context) {
-  const sweets = await getSweets();
+  let sweets = await getSweets();
   for (const sweet of sweets) {
     sweet.madeAt = format(sweet.madeAt, "u-MM-dd");
     const discount = calcDiscount(sweet.madeAt);
     sweet.discount = discount;
   }
+  sweets = sweets.filter((sweet) => sweet.discount > 0);
 
   return {
     props: { sweets },
