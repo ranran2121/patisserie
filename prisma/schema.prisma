@@ -28,5 +28,5 @@ model Ingredient{
   id Int @id @default(autoincrement())  
   name String
   sweetId Int
-  sweet Sweet @relation(fields: [sweetId], references: [id])
+  sweet Sweet @relation(fields: [sweetId], references: [id], onDelete: Cascade)
 }
