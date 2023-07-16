@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 const Login = () => {
   const [error, setError] = useState(false);
+  const [hasClicked, setHasClicked] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -15,26 +16,28 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     setError(false);
-    try {
-      const result = await signIn("credentials", {
-        email: data.email.trim(),
-        password: data.password,
-        redirect: false,
-      });
+    if (!hasClicked) {
+      try {
+        const result = await signIn("credentials", {
+          email: data.email.trim(),
+          password: data.password,
+          redirect: false,
+        });
 
-      if (result.error) {
+        if (result.error) {
+          setError(true);
+          return;
+        } else {
+          router.push("/dashboard");
+        }
+      } catch (error) {
         setError(true);
-        return;
-      } else {
-        router.push("/dashboard");
+      } finally {
+        reset({
+          email: "",
+          password: "",
+        });
       }
-    } catch (error) {
-      setError(true);
-    } finally {
-      reset({
-        email: "",
-        password: "",
-      });
     }
   };
 
@@ -56,9 +59,7 @@ const Login = () => {
           />
         </div>
         {errors.email && (
-          <small className="form-text text-danger">
-            this field is required
-          </small>
+          <small className="-mt-4 text-danger">this field is required</small>
         )}
 
         <div className="input-div">
@@ -73,12 +74,10 @@ const Login = () => {
           />
         </div>
         {errors.password && (
-          <small className="form-text text-danger">
-            this field is required
-          </small>
+          <small className="-mt-4 text-danger">this field is required</small>
         )}
         {error && (
-          <div className="bg-orange-300 p-4 capitalize">
+          <div className="bg-orange-300 p-4 capitalize my-4">
             email or password wrong
           </div>
         )}

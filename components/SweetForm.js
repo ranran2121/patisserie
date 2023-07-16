@@ -3,7 +3,8 @@ import axios from "axios";
 import { useForm, useFieldArray } from "react-hook-form";
 
 const SweetForm = () => {
-  const [submission, setSubmission] = useState(null);
+  const [feedback, setFeedback] = useState(null);
+  const [hasClicked, setHasClicked] = useState(false);
 
   const {
     register,
@@ -24,24 +25,27 @@ const SweetForm = () => {
       quantity: "",
       ingredients: [{ name: "" }],
     });
-    setSubmission(null);
+    setFeedback(null);
   };
 
   const onSubmit = async (data) => {
-    try {
-      await axios.post("/api/sweets", data);
-      handleReset();
-      setSubmission("Sweet successfully created");
-    } catch (e) {
-      setSubmission("Something went wrong...try later");
+    if (!hasClicked) {
+      setHasClicked(true);
+      try {
+        await axios.post("/api/sweets", data);
+        handleReset();
+        setFeedback("Sweet successfully created");
+      } catch (e) {
+        setFeedback("Something went wrong...try later");
+      }
     }
   };
 
   useEffect(() => {
     setTimeout(() => {
-      setSubmission(null);
+      setFeedback(null);
     }, 7000);
-  }, [submission]);
+  }, [feedback]);
 
   return (
     <form
@@ -157,7 +161,7 @@ const SweetForm = () => {
         </button>
       </div>
 
-      {submission && <div className="bg-orange-300 p-4">{submission}</div>}
+      {feedback && <div className="bg-orange-300 p-4">{feedback}</div>}
     </form>
   );
 };

@@ -5,7 +5,7 @@ const Dashboard = () => {
   return (
     <div className="container flex flex-col justify-center mx-auto content-center">
       <h2 className="text-center font-semibold text-2xl mb-6">
-        Create a sweet
+        Let&apos;s Create a sweet
       </h2>
       <SweetForm />
     </div>
