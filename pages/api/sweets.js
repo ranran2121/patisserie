@@ -10,9 +10,7 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case "POST":
-      console.log("QUI");
-
-      return create(req, res, session);
+      return create(req, res);
 
     default:
       return res.status(405).json({
@@ -22,7 +20,6 @@ export default async function handler(req, res) {
 }
 
 const create = async (req, res) => {
-  console.log("re", req.body);
   try {
     const newSweet = await createSweet(req.body);
     return res.status(201).json(newSweet);

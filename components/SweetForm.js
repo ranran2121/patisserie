@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm, useFieldArray } from "react-hook-form";
 
@@ -32,6 +32,12 @@ const SweetForm = () => {
       setSubmission("Something went wrong...try later");
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSubmission(null);
+    }, 7000);
+  }, [submission]);
 
   return (
     <form
