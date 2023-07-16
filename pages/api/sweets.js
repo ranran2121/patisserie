@@ -21,8 +21,8 @@ export default async function handler(req, res) {
 
 const create = async (req, res) => {
   try {
-    const newSweet = await createSweet(req.body);
-    return res.status(201).json(newSweet);
+    await createSweet(req.body);
+    return res.status(201).json("success");
   } catch (err) {
     console.error("Error in saving new profile", err);
     return res

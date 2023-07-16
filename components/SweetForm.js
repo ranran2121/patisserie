@@ -18,7 +18,12 @@ const SweetForm = () => {
   });
 
   const handleReset = () => {
-    reset({ sweetName: "", price: "", ingredients: [{ name: "" }] });
+    reset({
+      sweetName: "",
+      price: "",
+      quantity: "",
+      ingredients: [{ name: "" }],
+    });
     setSubmission(null);
   };
 
@@ -44,6 +49,22 @@ const SweetForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col items-center"
     >
+      <div className="input-div">
+        <label htmlFor="quantity" className="form-label">
+          quantity:
+        </label>
+        <input
+          type="number"
+          min="1"
+          {...register("quantity", { required: true })}
+          id="quantity"
+          className="form-input"
+        />
+      </div>
+      {errors.quantity && (
+        <small className="text-danger -mt-4">this field is required</small>
+      )}
+
       <div className="input-div">
         <label htmlFor="sweetName" className="form-label">
           name:
@@ -120,7 +141,7 @@ const SweetForm = () => {
 
       <button
         onClick={() => {
-          append({ ingredient: "" });
+          append({ name: "" });
         }}
         className="btn mt-2"
       >
