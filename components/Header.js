@@ -17,7 +17,7 @@ const Header = () => {
         />
       </Link>
       <h1 className="mt-4 text-2xl font-semibold">
-        Mary & Anne&apos;s patisserie
+        Mary & Luana&apos;s patisserie
       </h1>
       <Navbar />
     </header>

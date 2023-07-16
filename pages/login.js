@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container flex flex-col justify-center mx-auto content-center">
+    <div className="height flex flex-col justify-center mx-auto content-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center"

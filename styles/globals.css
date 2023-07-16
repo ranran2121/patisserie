@@ -23,8 +23,8 @@ body {
   @apply underline;
 }
 
-.container {
-  @apply md:min-h-[581px];
+.height {
+  @apply md:min-h-[581px] py-4;
 }
 
 .input-div {
@@ -49,4 +49,13 @@ body {
 
 .text-danger {
   @apply text-red-600 font-extrabold;
+}
+
+.modal {
+  @apply fixed top-0 left-0 w-[100%] h-[100%];
+  background: rgba(255, 228, 181, 0.3);
+}
+
+.modal_main {
+  @apply fixed top-[50%] left-[50%] w-[80%] bg-yellow-200 h-auto py-4 text-center rounded-3xl border-orange-500 border-2 -translate-x-[50%] -translate-y-[50%];
 }

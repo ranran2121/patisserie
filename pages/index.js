@@ -1,20 +1,40 @@
+import { useState } from "react";
 import Sweet from "@/components/Sweet";
 import { getSweets } from "@/lib/sweets_crud";
 import { format } from "date-fns";
+import Modal from "@/components/Modal";
+Modal;
 
 const Home = (props) => {
   const { sweets } = props;
+  const [showModal, setShowModal] = useState(false);
+  const [sweet, setSweet] = useState(null);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
-    <div className="flex flex-wrap content-center justify-center container mx-auto">
+    <div className="flex flex-wrap content-center justify-center height w-screen">
       {sweets.length > 0 &&
         sweets.map((sweet) => {
           return (
-            <div key={sweet.id}>
+            <div
+              key={sweet.id}
+              id={sweet.id}
+              onClick={() => {
+                setSweet(sweet);
+                setShowModal(true);
+              }}
+              className="cursor-pointer"
+            >
               <Sweet sweet={sweet} />
             </div>
           );
         })}
+      {showModal && (
+        <Modal showModal={showModal} closeModal={closeModal} sweet={sweet} />
+      )}
       {!sweets ||
         (sweets.length == 0 && (
           <p className="capitalize">Baking in progress</p>
