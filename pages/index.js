@@ -6,7 +6,7 @@ const Home = (props) => {
   const { sweets } = props;
 
   return (
-    <div className="flex flex-wrap content-center justify-center container">
+    <div className="flex flex-wrap content-center justify-center container mx-auto">
       {sweets.length > 0 &&
         sweets.map((sweet) => {
           return (

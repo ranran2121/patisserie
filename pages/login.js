@@ -48,7 +48,7 @@ const Login = () => {
             type="text"
             {...register("email", { required: true })}
             id="email"
-            className="form-control"
+            className="form-input"
           />
         </div>
         {errors.email && (
@@ -65,7 +65,7 @@ const Login = () => {
             type="password"
             {...register("password", { required: true })}
             id="password"
-            className="form-control"
+            className="form-input"
           />
         </div>
         {errors.password && (

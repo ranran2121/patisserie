@@ -13,10 +13,17 @@ const Navbar = () => {
   }
 
   return (
-    <ul className="flex flex-row justify-center text-white">
-      {/* <li className={`m-2 ${isActive(ROUTES.sweets)}`}>
-        <Link href={ROUTES.home}>Sweets</Link>
-      </li> */}
+    <ul className="flex flex-row justify-center text-white gap-6">
+      {session && (
+        <li className={`m-2 ${isActive(ROUTES.home)}`}>
+          <Link href={ROUTES.home}>Home</Link>
+        </li>
+      )}
+      {session && (
+        <li className={`m-2 ${isActive(ROUTES.dashboard)}`}>
+          <Link href={ROUTES.dashboard}>Dashboard</Link>
+        </li>
+      )}
       <li className={`m-2 ${isActive(ROUTES.login)}`}>
         {!session ? (
           <Link href={ROUTES.login}>Login</Link>
