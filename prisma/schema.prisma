@@ -16,3 +16,17 @@ model Admin {
   email String @unique
   password String 
 }
+model Sweet {
+  id Int @id @default(autoincrement())  
+  name String 
+  ingredients Ingredient[] 
+  price Float
+  madeAt DateTime 
+}
+
+model Ingredient{
+  id Int @id @default(autoincrement())  
+  name String
+  sweetId Int
+  sweet Sweet @relation(fields: [sweetId], references: [id])
+}
