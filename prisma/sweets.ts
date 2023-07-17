@@ -1,4 +1,6 @@
-﻿export const sweets = [
+﻿import { SweetType } from "@/types";
+
+export const sweets: SweetType[] = [
   {
     id: 1,
     name: "cheesecake",

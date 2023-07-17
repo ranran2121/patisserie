@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { admins } from "./admins.mjs";
-import { sweets } from "./sweets.mjs";
+import { admins } from "./admins";
+import { sweets } from "./sweets";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();

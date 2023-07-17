@@ -1,6 +1,7 @@
-import prisma from "./prisma";
+import { prisma } from "./prisma";
+import { SweetType, SweetCreateType } from "@/types";
 
-export const getSweets = async () => {
+export const getSweets = async (): Promise<SweetType[] | null> => {
   try {
     const sweets = await prisma.sweet.findMany({
       include: { ingredients: true },
@@ -14,7 +15,9 @@ export const getSweets = async () => {
   }
 };
 
-export const createSweet = async (data) => {
+export const createSweet = async (
+  data: SweetCreateType
+): Promise<string | null> => {
   try {
     for (let i = 1; i <= parseInt(data.quantity); i++) {
       const sweet = await prisma.sweet.create({

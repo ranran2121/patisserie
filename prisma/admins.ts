@@ -1,4 +1,6 @@
-﻿export const admins = [
+﻿import { AdminType } from "@/types";
+
+export const admins: AdminType[] = [
   {
     id: 1,
     name: "Luana",
@@ -7,7 +9,7 @@
   },
   {
     id: 2,
-    name: "Mariaa",
+    name: "Maria",
     email: "maria@patisserie.com",
     password: "mariachef",
   },
