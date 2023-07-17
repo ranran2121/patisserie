@@ -8,7 +8,10 @@ const Modal = (props: {
   return (
     <div className="modal">
       <section className="modal_main">
-        <h5 className="font-semibold underline">Ingredients:</h5>
+        <h2 className="uppercase text-xl md:text-3xl bg-color2 p-4 w-[60%] mx-auto">
+          {sweet?.name}
+        </h2>
+        <p className="font-semibold underline">Ingredients:</p>
         <ul className="italic">
           {sweet?.ingredients.map((ingredient: { name: string }) => {
             return <li key={ingredient.name}>{ingredient.name}</li>;

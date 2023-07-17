@@ -34,7 +34,11 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
           );
         })}
       {showModal && <Modal closeModal={closeModal} sweet={sweet} />}
-      {sweetsFe.length == 0 && <p className="capitalize">Baking in progress</p>}
+      {sweetsFe.length == 0 && (
+        <p className="capitalize font-bold text-3xl bg-color2 p-4">
+          Baking in progress
+        </p>
+      )}
     </div>
   );
 };

@@ -67,6 +67,7 @@ const SweetForm = () => {
         <input
           type="number"
           min="1"
+          max="100"
           defaultValue={1}
           {...register("quantity", { required: true })}
           id="quantity"
