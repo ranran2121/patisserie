@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { AdminTypeLogin } from "@/types";
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -12,9 +13,11 @@ const Login = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<AdminTypeLogin>();
 
-  const onSubmit = async (data) => {
+  const onSubmit: SubmitHandler<AdminTypeLogin> = async (
+    data: any
+  ): Promise<void> => {
     setError(false);
     if (!hasClicked) {
       try {
@@ -24,7 +27,7 @@ const Login = () => {
           redirect: false,
         });
 
-        if (result.error) {
+        if (result?.error) {
           setError(true);
           return;
         } else {

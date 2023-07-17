@@ -5,12 +5,26 @@ export type AdminType = {
   password: string;
 };
 
+export type AdminTypeLogin = {
+  email: string;
+  password: string;
+};
+
 export type SweetType = {
   id: number;
   name: string;
   ingredients: IngredientType[];
   price: number;
   madeAt: Date;
+};
+
+export type SweetTypeFe = {
+  id: number;
+  name: string;
+  ingredients: IngredientType[];
+  price: number;
+  madeAt: string;
+  discount: number;
 };
 
 export type IngredientType = {

@@ -1,5 +1,5 @@
 import SweetForm from "@/components/SweetForm";
-import { getSession } from "next-auth/react";
+import { GetSessionParams, getSession } from "next-auth/react";
 
 const Dashboard = () => {
   return (
@@ -14,7 +14,9 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(
+  context: GetSessionParams | undefined
+) {
   const session = await getSession(context);
 
   if (!session) {

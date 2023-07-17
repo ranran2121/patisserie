@@ -1,8 +1,12 @@
 import { authOptions } from "./auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 import { createSweet } from "../../lib/sweets_crud";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
@@ -20,7 +24,7 @@ export default async function handler(req, res) {
   }
 }
 
-const create = async (req, res) => {
+const create = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     await createSweet(req.body);
     return res.status(201).json("success");
