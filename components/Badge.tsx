@@ -13,7 +13,7 @@ const Badge = (props: { discount: number }) => {
         height={50}
       />
       <div className="absolute -top-1 -right-[10px] text-white font-bold text-xs">
-        <p className="">{(1 - discount) * 100}%</p>
+        <p className="">{100 - discount * 100}%</p>
         <p className="">OFF</p>
       </div>
     </>

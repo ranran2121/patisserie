@@ -36,7 +36,7 @@ const TwentyOff = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
       {showModal && <Modal closeModal={closeModal} sweet={sweet} />}
       {sweetsFe.length == 0 && (
         <p className="capitalize font-bold text-3xl bg-color2 p-4">
-          Baking in progress
+          No sweets at this fare
         </p>
       )}
     </div>

@@ -21,7 +21,7 @@ model Sweet {
   name String 
   ingredients Ingredient[] 
   price Float
-  madeAt DateTime 
+  madeAt DateTime @default(now())
 }
 
 model Ingredient{
