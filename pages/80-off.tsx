@@ -6,7 +6,7 @@ import Modal from "@/components/Modal";
 import { SweetType, SweetTypeFe } from "@/types";
 import { calcDiscount } from "../lib/utils";
 
-const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
+const EightyOff = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
   const { sweetsFe } = props;
   const [showModal, setShowModal] = useState(false);
   const [sweet, setSweet] = useState<SweetTypeFe | null>(null);
@@ -43,7 +43,7 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
   );
 };
 
-export default Home;
+export default EightyOff;
 
 export async function getServerSideProps(context: any) {
   const sweets: SweetType[] | null = await getSweets();
@@ -58,7 +58,7 @@ export async function getServerSideProps(context: any) {
 
         return sweetFe;
       })
-      .filter((sweet) => sweet.discount > 0);
+      .filter((sweet) => sweet.discount === 0.2);
   }
 
   return {
