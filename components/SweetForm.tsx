@@ -68,6 +68,7 @@ const SweetForm = () => {
           type="number"
           min="1"
           max="100"
+          step="1"
           defaultValue={1}
           {...register("quantity", { required: true })}
           id="quantity"
