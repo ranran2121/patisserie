@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="h-10 bg-color1 text-white text-center w-full">
+    <footer className="h-10 bg-color1 text-white text-center w-full pt-2">
       Do you like the website?
       <a
         href="mailto:m.hacke@example.com"
