@@ -16,10 +16,6 @@
   }
 }
 
-body {
-  @apply font-poppins;
-}
-
 .active {
   @apply underline;
 }

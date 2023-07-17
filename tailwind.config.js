@@ -7,13 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        "poppins-semibold": ["Poppins-semibold", "sans-serif"],
-        "poppins-bold": ["Poppins-bold", "sans-serif"],
-        "poppins-extra-bold": ["Poppins-extra-bold", "sans-serif"],
-        "poppins-black": ["Poppins-black", "sans-serif"],
-      },
       colors: {
         color1: "#F97316", //orange-500
         color2: "#FB923C", //orange-400
