@@ -15,7 +15,7 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <ul className="flex flex-row justify-center text-white gap-6 w-screen md:w-auto">
+    <ul className="flex flex-row justify-center text-white gap-2 md:gap-6 w-screen md:w-auto">
       {ROUTES.map((route, index) => {
         const { label, path } = route;
         return (

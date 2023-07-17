@@ -8,7 +8,7 @@ const Sweet = (props: { sweet: SweetTypeFe }) => {
   const { name, price, discount } = sweet;
 
   return (
-    <div className="border-2 border-color1 rounded-2xl mx-4 my-2 p-4 bg-color3 w-60 h-56 flex flex-col content-center text-center relative">
+    <div className="border-2 border-color1 rounded-2xl mx-auto mt-4 mb-8 md:mx-4 md:my-2 p-4 bg-color3 w-60 h-56 flex flex-col content-center text-center relative">
       <div>
         {discount !== 1 && <Badge discount={discount} />}
         <h3 className="capitalize font-semibold text-2xl mb-2">{name}</h3>

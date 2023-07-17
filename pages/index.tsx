@@ -5,6 +5,10 @@ import { format } from "date-fns";
 import Modal from "@/components/Modal";
 import { SweetType, SweetTypeFe } from "@/types";
 import { calcDiscount } from "../lib/utils";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
   const { sweetsFe } = props;
@@ -16,30 +20,63 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
   };
 
   return (
-    <div className="flex flex-wrap content-center justify-center height w-screen">
-      {sweetsFe.length > 0 &&
-        sweetsFe.map((sweet: SweetTypeFe) => {
-          return (
-            <div
-              key={sweet.id}
-              id={String(sweet.id)}
-              onClick={() => {
-                setSweet(sweet);
-                setShowModal(true);
-              }}
-              className="cursor-pointer"
-            >
-              <Sweet sweet={sweet} />
-            </div>
-          );
-        })}
-      {showModal && <Modal closeModal={closeModal} sweet={sweet} />}
-      {sweetsFe.length == 0 && (
-        <p className="capitalize font-bold text-3xl bg-color2 p-4">
-          Baking in progress
-        </p>
-      )}
-    </div>
+    <>
+      <div className="md:hidden">
+        {sweetsFe.length > 0 && (
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            direction="horizontal"
+            slideToClickedSlide={true}
+            centeredSlides={true}
+            pagination={{ clickable: true }}
+          >
+            {sweetsFe.map((sweet: SweetTypeFe) => {
+              return (
+                <div
+                  key={sweet.id}
+                  id={String(sweet.id)}
+                  onClick={() => {
+                    setSweet(sweet);
+                    setShowModal(true);
+                  }}
+                  className="cursor-pointer"
+                >
+                  <SwiperSlide>
+                    <Sweet sweet={sweet} />
+                  </SwiperSlide>
+                </div>
+              );
+            })}
+          </Swiper>
+        )}
+      </div>
+      <div className="hidden md:flex md:flex-wrap md:content-center md:justify-center md:container md:w-screen">
+        {sweetsFe.length > 0 &&
+          sweetsFe.map((sweet: SweetTypeFe) => {
+            return (
+              <div
+                key={sweet.id}
+                id={String(sweet.id)}
+                onClick={() => {
+                  setSweet(sweet);
+                  setShowModal(true);
+                }}
+                className="cursor-pointer"
+              >
+                <Sweet sweet={sweet} />
+              </div>
+            );
+          })}
+        {showModal && <Modal closeModal={closeModal} sweet={sweet} />}
+        {sweetsFe.length == 0 && (
+          <p className="capitalize font-bold text-3xl bg-color2 p-4">
+            Baking in progress
+          </p>
+        )}
+      </div>
+    </>
   );
 };
 
