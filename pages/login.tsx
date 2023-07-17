@@ -80,7 +80,7 @@ const Login = () => {
           <small className="-mt-4 text-danger">this field is required</small>
         )}
         {error && (
-          <div className="bg-orange-300 p-4 capitalize my-4">
+          <div className="bg-color3 p-4 capitalize my-4">
             email or password wrong
           </div>
         )}

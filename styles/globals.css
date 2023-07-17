@@ -17,6 +17,7 @@
 }
 
 body {
+  @apply font-poppins;
 }
 
 .active {
@@ -36,7 +37,7 @@ body {
 }
 
 .form-input {
-  @apply border-2 border-orange-500 rounded-2xl p-2 basis-2/3;
+  @apply border-2 border-color1 rounded-2xl p-2 basis-2/3;
 }
 
 .form-label {
@@ -44,7 +45,7 @@ body {
 }
 
 .btn {
-  @apply bg-orange-500 rounded-2xl px-4 py-2;
+  @apply bg-color1 rounded-2xl px-4 py-2;
 }
 
 .text-danger {
@@ -53,9 +54,9 @@ body {
 
 .modal {
   @apply fixed top-0 left-0 w-[100%] h-[100%];
-  background: rgba(255, 228, 181, 0.3);
+  background: rgba(255, 228, 181, 0.7);
 }
 
 .modal_main {
-  @apply fixed top-[50%] left-[50%] w-[80%] bg-yellow-200 h-auto py-4 text-center rounded-3xl border-orange-500 border-2 -translate-x-[50%] -translate-y-[50%];
+  @apply fixed top-[50%] left-[50%] w-[80%] md:w-[50%] bg-color5 h-auto py-4 text-center rounded-3xl border-color1 border-8 -translate-x-[50%] -translate-y-[50%];
 }

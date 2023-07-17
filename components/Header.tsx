@@ -5,7 +5,7 @@ import img from "../assets/logo.jpeg";
 
 const Header = () => {
   return (
-    <header className="flex flex-col items-center p-12 bg-orange-400 h-fit">
+    <header className="flex flex-col items-center p-12 bg-color2 h-fit">
       <Link href="/">
         <Image
           src={img}

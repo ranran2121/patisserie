@@ -119,7 +119,7 @@ const SweetForm = () => {
               <div className="basis-2/3 flex flex-col">
                 <div className="form-control">
                   <input
-                    className="border-2 border-orange-500 rounded-2xl p-2 basis-5/6"
+                    className="border-2 border-color1 rounded-2xl p-2 basis-5/6"
                     type="text"
                     {...register(`ingredients.${index}.name`, {
                       required: true,
@@ -170,7 +170,7 @@ const SweetForm = () => {
         </button>
       </div>
 
-      {feedback && <div className="bg-orange-300 p-4">{feedback}</div>}
+      {feedback && <div className="bg-color3 p-4">{feedback}</div>}
     </form>
   );
 };
