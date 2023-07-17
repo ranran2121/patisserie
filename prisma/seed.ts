@@ -4,10 +4,11 @@ import { sweets } from "./sweets";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
+const SALT = Number(process.env.SALT) ?? 10;
 
 async function main() {
   for (let i = 0; i < admins.length; i++) {
-    const hashedPwd = await bcrypt.hash(admins[i].password, 10);
+    const hashedPwd = await bcrypt.hash(admins[i].password, SALT);
     await prisma.admin.upsert({
       where: { id: admins[i].id },
       update: {},
