@@ -5,10 +5,10 @@ import { useSession, signOut } from "next-auth/react";
 const ROUTES = { home: "/", dashboard: "/dashboard", login: "/login" };
 
 const Navbar = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
 
-  function isActive(route) {
+  function isActive(route: string) {
     return router.pathname == route ? "active" : "";
   }
 

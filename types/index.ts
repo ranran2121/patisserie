@@ -32,7 +32,7 @@ export type IngredientType = {
 };
 
 export type SweetCreateType = {
-  sweetName: string;
+  name: string;
   ingredients: IngredientType[];
   price: string;
   madeAt: Date;

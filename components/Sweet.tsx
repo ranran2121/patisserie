@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { format } from "date-fns";
 import img from "../assets/general_cake.jpeg";
+import { SweetTypeFe } from "@/types";
 
-const Sweet = ({ sweet }) => {
+const Sweet = (props: { sweet: SweetTypeFe }) => {
+  const { sweet } = props;
   const { name, price, discount } = sweet;
 
   return (

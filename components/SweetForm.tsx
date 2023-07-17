@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm, useFieldArray } from "react-hook-form";
+import { IngredientType } from "@/types";
+
+type FormDataType = {
+  name: string;
+  price: string;
+  quantity: number;
+  ingredients: IngredientType[];
+};
 
 const SweetForm = () => {
-  const [feedback, setFeedback] = useState(null);
+  const [feedback, setFeedback] = useState("");
   const [hasClicked, setHasClicked] = useState(false);
 
   const {
@@ -12,7 +20,7 @@ const SweetForm = () => {
     reset,
     control,
     formState: { errors },
-  } = useForm({ defaultValues: { ingredients: [{ name: "" }] } });
+  } = useForm<FormDataType>({ defaultValues: { ingredients: [{ name: "" }] } });
   const { fields, append, remove } = useFieldArray({
     control,
     name: "ingredients",
@@ -20,15 +28,15 @@ const SweetForm = () => {
 
   const handleReset = () => {
     reset({
-      sweetName: "",
+      name: "",
       price: "",
-      quantity: "",
       ingredients: [{ name: "" }],
+      quantity: 1,
     });
-    setFeedback(null);
+    setFeedback("");
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormDataType) => {
     if (!hasClicked) {
       setHasClicked(true);
       try {
@@ -43,14 +51,14 @@ const SweetForm = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setFeedback(null);
+      setFeedback("");
     }, 7000);
   }, [feedback]);
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col items-center"
+      className="flex flex-col items-center md:w-[60%] px-1 mx-auto"
     >
       <div className="input-div">
         <label htmlFor="quantity" className="form-label">
@@ -59,6 +67,7 @@ const SweetForm = () => {
         <input
           type="number"
           min="1"
+          defaultValue={1}
           {...register("quantity", { required: true })}
           id="quantity"
           className="form-input"
@@ -74,12 +83,12 @@ const SweetForm = () => {
         </label>
         <input
           type="text"
-          {...register("sweetName", { required: true })}
+          {...register("name", { required: true })}
           id="sweetName"
           className="form-input"
         />
       </div>
-      {errors.sweetName && (
+      {errors.name && (
         <small className="text-danger -mt-4">this field is required</small>
       )}
 

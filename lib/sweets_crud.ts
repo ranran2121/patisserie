@@ -20,9 +20,9 @@ export const createSweet = async (
 ): Promise<string | null> => {
   try {
     for (let i = 1; i <= parseInt(data.quantity); i++) {
-      const sweet = await prisma.sweet.create({
+      await prisma.sweet.create({
         data: {
-          name: data.sweetName,
+          name: data.name,
           price: parseFloat(data.price),
           ingredients: { create: data.ingredients },
           madeAt: new Date(),
@@ -33,6 +33,7 @@ export const createSweet = async (
     return "success";
   } catch (err) {
     console.error("error in createSweet", err);
-    return null;
+
+    throw new Error("error in createSweet");
   }
 };
