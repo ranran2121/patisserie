@@ -25,7 +25,7 @@ const Header = () => {
       <h1 className="mt-4 text-2xl font-semibold">
         Mary & Luana&apos;s patisserie
       </h1>
-      {router.pathname === "dashboard" ? <DashboardNavbar /> : <Navbar />}
+      {router.pathname === "/dashboard" ? <DashboardNavbar /> : <Navbar />}
 
       {!session ? (
         <Link href="/login" className="login-btn">
