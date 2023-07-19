@@ -28,6 +28,7 @@ export type SweetTypeFe = {
 };
 
 export type IngredientType = {
+  id?: number;
   name: string;
 };
 
@@ -37,4 +38,19 @@ export type SweetCreateType = {
   price: string;
   madeAt: Date;
   quantity: string;
+};
+
+export type SweetUpdateType = {
+  name: string;
+  ingredients: IngredientType[];
+  price: number;
+  madeAt: Date;
+  quantity: string;
+  id: string;
+};
+
+export type listType = {
+  id?: number;
+  name: string;
+  sweetId?: number;
 };

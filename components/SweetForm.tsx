@@ -53,10 +53,12 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
           handleReset();
           setFeedback("Sweet successfully created");
         } else {
-          await axios.put("/api/sweets", {
+          const s = await axios.put("/api/sweets", {
             data: { ...data, id: sweetFe.id, madeAt: sweetFe.madeAt },
           });
-          router.push("/dashboard/sweets");
+
+          setFeedback("Sweet successfully updated");
+          router.refresh();
         }
       } catch (e) {
         setFeedback("Something went wrong...try later");
@@ -189,7 +191,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
 
         <div className="my-4 flex flex-row gap-4">
           <button className="btn" type="submit">
-            Create
+            {!sweetFe ? "Create" : "update"}
           </button>
 
           <button className="btn" type="button" onClick={handleReset}>

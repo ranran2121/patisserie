@@ -1,5 +1,11 @@
 import { prisma } from "./prisma";
-import { SweetType, SweetCreateType } from "@/types";
+import {
+  SweetType,
+  SweetCreateType,
+  IngredientType,
+  SweetUpdateType,
+} from "@/types";
+import { prepareIngredients } from "./utils";
 
 export const getSweets = async (): Promise<SweetType[] | null> => {
   try {
@@ -38,21 +44,46 @@ export const createSweet = async (
   }
 };
 
-export const updateSweet = async (data: SweetType): Promise<string | null> => {
+export const updateSweet = async (
+  data: SweetUpdateType
+): Promise<SweetType | null> => {
   try {
     await prisma.ingredient.deleteMany({
-      where: { sweetId: data.id },
+      where: { sweetId: parseFloat(data.id) },
     });
+
+    const newIngredients = prepareIngredients(data.ingredients);
     await prisma.sweet.update({
-      where: { id: data.id },
+      where: { id: parseFloat(data.id) },
       data: {
         name: data.name,
         price: data.price,
-        ingredients: { create: data.ingredients },
+        ingredients: {
+          set: [],
+        },
         madeAt: new Date(data.madeAt),
       },
+      include: {
+        ingredients: true,
+      },
     });
-    return "success";
+
+    const sweet = await prisma.sweet.update({
+      where: { id: parseFloat(data.id) },
+      data: {
+        name: data.name,
+        price: data.price,
+        ingredients: {
+          create: newIngredients,
+        },
+        madeAt: new Date(data.madeAt),
+      },
+      include: {
+        ingredients: true,
+      },
+    });
+
+    return sweet;
   } catch (err) {
     console.error("error in updateSweet", err);
 

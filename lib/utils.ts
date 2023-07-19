@@ -1,3 +1,4 @@
+import { listType } from "@/types";
 import { format } from "date-fns";
 
 export function isActive(pathname: string, route: string) {
@@ -21,3 +22,11 @@ export function calcDiscount(date: string): number {
   }
   return 0;
 }
+
+export const prepareIngredients = (list: listType[]) => {
+  let result: listType[] = [];
+  list.forEach((ingredient) => {
+    result.push({ name: ingredient.name });
+  });
+  return result;
+};
