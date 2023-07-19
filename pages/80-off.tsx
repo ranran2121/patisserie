@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Message from "@/components/Message";
 
 const EightyOff = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
   const { sweetsFe } = props;
@@ -52,7 +53,7 @@ const EightyOff = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
           </Swiper>
         )}
       </div>
-      <div className="hidden md:flex md:flex-wrap md:content-center md:justify-center md:container md:w-screen">
+      <div className="hidden md:flex md:flex-wrap md:content-center md:justify-center md:container md:w-screen md:min-h-[581px] py-4">
         {sweetsFe.length > 0 &&
           sweetsFe.map((sweet: SweetTypeFe) => {
             return (
@@ -70,11 +71,8 @@ const EightyOff = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
             );
           })}
         {showModal && <Modal closeModal={closeModal} sweet={sweet} />}
-        {sweetsFe.length == 0 && (
-          <p className="capitalize font-bold text-3xl bg-color2 p-4">
-            No sweets at this fare
-          </p>
-        )}
+
+        {sweetsFe.length == 0 && <Message message="no sweets at this fare" />}
       </div>
     </>
   );

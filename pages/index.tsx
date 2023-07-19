@@ -7,6 +7,7 @@ import { SweetType, SweetTypeFe } from "@/types";
 import { calcDiscount } from "../lib/utils";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import Message from "@/components/Message";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -21,6 +22,7 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
 
   return (
     <>
+      {/* Layout for mobile */}
       <div className="md:hidden">
         {sweetsFe.length > 0 && (
           <Swiper
@@ -52,7 +54,8 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
           </Swiper>
         )}
       </div>
-      <div className="hidden md:flex md:flex-wrap md:content-center md:justify-center md:container md:w-screen">
+      {/* Layout for tablet and desktop */}
+      <div className="hidden md:flex md:flex-wrap md:content-center md:justify-center md:min-h-[581px] py-4 md:w-screen">
         {sweetsFe.length > 0 &&
           sweetsFe.map((sweet: SweetTypeFe) => {
             return (
@@ -70,11 +73,7 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
             );
           })}
         {showModal && <Modal closeModal={closeModal} sweet={sweet} />}
-        {sweetsFe.length == 0 && (
-          <p className="capitalize font-bold text-3xl bg-color2 p-4">
-            Baking in progress
-          </p>
-        )}
+        {sweetsFe.length == 0 && <Message message={"baking in progress"} />}
       </div>
     </>
   );

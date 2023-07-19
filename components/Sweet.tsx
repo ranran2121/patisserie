@@ -1,5 +1,5 @@
 import Image from "next/image";
-import img from "../assets/general_cake.jpeg";
+import img from "../assets/general_cake.png";
 import { SweetTypeFe } from "@/types";
 import Badge from "./Badge";
 

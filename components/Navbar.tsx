@@ -19,7 +19,10 @@ const Navbar = () => {
       {ROUTES.map((route, index) => {
         const { label, path } = route;
         return (
-          <li className={`m-2 ${isActive(router.pathname, path)}`} key={index}>
+          <li
+            className={`m-2 uppercase ${isActive(router.pathname, path)}`}
+            key={index}
+          >
             <Link href={path}>{label}</Link>
           </li>
         );
