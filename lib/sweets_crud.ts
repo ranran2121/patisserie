@@ -38,6 +38,28 @@ export const createSweet = async (
   }
 };
 
+export const updateSweet = async (data: SweetType): Promise<string | null> => {
+  try {
+    await prisma.ingredient.deleteMany({
+      where: { sweetId: data.id },
+    });
+    await prisma.sweet.update({
+      where: { id: data.id },
+      data: {
+        name: data.name,
+        price: data.price,
+        ingredients: { create: data.ingredients },
+        madeAt: new Date(data.madeAt),
+      },
+    });
+    return "success";
+  } catch (err) {
+    console.error("error in updateSweet", err);
+
+    throw new Error("error in updateSweet");
+  }
+};
+
 export const deleteSweet = async (id: number): Promise<string | null> => {
   try {
     await prisma.sweet.delete({
@@ -49,5 +71,20 @@ export const deleteSweet = async (id: number): Promise<string | null> => {
     console.error("error in deleteSweet", err);
 
     throw new Error("error in deleteSweet");
+  }
+};
+
+export const getSweet = async (id: number): Promise<SweetType | null> => {
+  try {
+    const sweet = await prisma.sweet.findUnique({
+      where: { id },
+      include: { ingredients: true },
+    });
+
+    return sweet;
+  } catch (err) {
+    console.error("error in getSweet", err);
+
+    throw new Error("error in getSweet");
   }
 };

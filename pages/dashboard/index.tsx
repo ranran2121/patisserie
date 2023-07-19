@@ -1,22 +1,18 @@
 import SweetForm from "@/components/SweetForm";
-import { GetSessionParams, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
+import { GetServerSideProps } from "next";
 
 const Dashboard = () => {
   return (
     <div className="md:min-h-[581px] py-4 flex flex-col justify-center mx-auto content-center">
-      <h2 className="text-center font-semibold text-2xl mb-6">
-        Let&apos;s Create a sweet
-      </h2>
-      <SweetForm />
+      <SweetForm sweetFe={null} />
     </div>
   );
 };
 
 export default Dashboard;
 
-export async function getServerSideProps(
-  context: GetSessionParams | undefined
-) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
 
   if (!session) {
@@ -28,4 +24,4 @@ export async function getServerSideProps(
     };
   }
   return { props: { session } };
-}
+};

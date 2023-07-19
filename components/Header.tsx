@@ -9,7 +9,6 @@ import DashboardNavbar from "./DashboardNavbar";
 const Header = () => {
   const { data: session } = useSession();
   const pathname = usePathname();
-  console.log("PP", pathname);
 
   return (
     <header className="flex flex-col items-center p-12 bg-color2 h-fit relative">

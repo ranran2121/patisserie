@@ -3,7 +3,8 @@ import { getSweets } from "@/lib/sweets_crud";
 import { calcDiscount } from "@/lib/utils";
 import { SweetType, SweetTypeFe } from "@/types";
 import { format } from "date-fns";
-import { GetSessionParams, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
+import { GetServerSideProps } from "next";
 
 const List = (props: { sweetsFe: SweetTypeFe[] }) => {
   const { sweetsFe } = props;
@@ -17,9 +18,7 @@ const List = (props: { sweetsFe: SweetTypeFe[] }) => {
 
 export default List;
 
-export async function getServerSideProps(
-  context: GetSessionParams | undefined
-) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   let sweetsFe: SweetTypeFe[] | [] = [];
 
@@ -53,4 +52,4 @@ export async function getServerSideProps(
       props: { session, sweetsFe },
     };
   }
-}
+};
