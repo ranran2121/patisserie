@@ -23,10 +23,16 @@ export function calcDiscount(date: string): number {
   return 0;
 }
 
-export const prepareIngredients = (list: listType[]) => {
-  let result: listType[] = [];
-  list.forEach((ingredient) => {
-    result.push({ name: ingredient.name });
+export const arrangeIngredients = (list: listType[]) => {
+  const result = list.map((ingredient) => {
+    return { name: ingredient.name };
   });
   return result;
+};
+
+export const choseColor = (number: number) => {
+  if (number === 0) return "bg-slate-300";
+  if (number === 0.2) return "bg-color6";
+  if (number === 0.8) return "bg-color7";
+  return "";
 };

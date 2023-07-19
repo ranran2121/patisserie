@@ -2,8 +2,7 @@ import { authOptions } from "./auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 import {
   createSweet,
-  deleteSweet,
-  getSweets,
+  deleteSweetById,
   updateSweet,
 } from "../../lib/sweets_crud";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -24,7 +23,7 @@ export default async function handler(
     case "PUT":
       return update(req, res);
     case "DELETE":
-      return deleteASweet(req, res);
+      return deleteSweet(req, res);
 
     default:
       return res.status(405).json({
@@ -62,9 +61,15 @@ const update = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const deleteASweet = async (req: NextApiRequest, res: NextApiResponse) => {
+const deleteSweet = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    await deleteSweet(req.body.id);
+    if (req.body.id) {
+      await deleteSweetById(req.body.id);
+    } else {
+      for (let sweet of req.body.staleSweets) {
+        await deleteSweetById(sweet.id);
+      }
+    }
     return res.status(201).json("success");
   } catch (err) {
     console.error("Error in deleting a sweet", err);

@@ -1,3 +1,4 @@
+import { choseColor } from "@/lib/utils";
 import { SweetTypeFe } from "@/types";
 import axios from "axios";
 import Link from "next/link";
@@ -13,7 +14,7 @@ const SweetsList = (props: { sweetsFe: SweetTypeFe[] }) => {
   };
 
   return (
-    <table className="mx-auto px-8 text-center w-full md:w-[80%] border-2 border-blue-500">
+    <table className="mx-auto px-8 text-center w-full md:w-[80%]">
       <thead>
         <tr className="first-row">
           <th className="font-extrabold">#</th>
@@ -24,13 +25,15 @@ const SweetsList = (props: { sweetsFe: SweetTypeFe[] }) => {
           <th>Delete</th>
         </tr>
       </thead>
+
       <tbody>
         {sweetsFe.map((sweet, index) => {
-          const { id, name, madeAt, price, ingredients } = sweet;
+          const { id, name, madeAt, price, color } = sweet;
+
           return (
-            <tr className="row" key={id}>
+            <tr className={`row ${color}`} key={id}>
               <td className="font-bold">{index + 1}</td>
-              <td>{name}</td>
+              <td className="capitalize">{name}</td>
               <td>{price}</td>
               <td>{madeAt}</td>
               <td>
@@ -40,7 +43,7 @@ const SweetsList = (props: { sweetsFe: SweetTypeFe[] }) => {
               </td>
               <td>
                 <button
-                  className="btn"
+                  className="btn-red"
                   type="button"
                   onClick={() => handleOnclick(id)}
                 >

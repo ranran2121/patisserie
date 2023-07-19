@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { isActive } from "../lib/utils";
 
@@ -12,28 +12,23 @@ const PVTROUTE = { path: "/dashboard", label: "dashboard" };
 
 const Navbar = () => {
   const { data: session } = useSession();
-  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <ul className="flex flex-row justify-center text-white gap-2 md:gap-6 w-screen md:w-auto">
-      {ROUTES.map((route, index) => {
+      {ROUTES.map((route) => {
         const { label, path } = route;
         return (
           <li
-            className={`m-2 uppercase ${isActive(router.pathname, path)}`}
-            key={index}
+            className={`m-2 uppercase ${isActive(pathname, path)}`}
+            key={label}
           >
             <Link href={path}>{label}</Link>
           </li>
         );
       })}
       {session && (
-        <li
-          className={`m-2 uppercase ${isActive(
-            router.pathname,
-            PVTROUTE.path
-          )}`}
-        >
+        <li className={`m-2 uppercase ${isActive(pathname, PVTROUTE.path)}`}>
           <Link href={PVTROUTE.path}>{PVTROUTE.label}</Link>
         </li>
       )}

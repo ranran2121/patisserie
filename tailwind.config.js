@@ -13,6 +13,8 @@ module.exports = {
         color3: "#FFBA74", //orange-300
         color4: "#F3B308", //yellow-500
         color5: "#F7F1E5", //yellow-200
+        color6: "#FED7AA", //orange-200
+        color7: "#FCA5A5", //red-300
       },
     },
   },

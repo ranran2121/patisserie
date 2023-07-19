@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useForm, useFieldArray } from "react-hook-form";
 import { IngredientType, SweetTypeFe } from "@/types";
+import Link from "next/link";
 
 type FormDataType = {
   name: string | undefined;
@@ -15,7 +15,6 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
   const { sweetFe } = props;
   const [feedback, setFeedback] = useState("");
   const [hasClicked, setHasClicked] = useState(false);
-  const router = useRouter();
 
   const defaultFormValues: FormDataType = {
     name: sweetFe?.name ? sweetFe.name : "",
@@ -58,10 +57,11 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
           });
 
           setFeedback("Sweet successfully updated");
-          router.refresh();
         }
       } catch (e) {
         setFeedback("Something went wrong...try later");
+      } finally {
+        setHasClicked(false);
       }
     }
   };
@@ -74,12 +74,22 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
 
   return (
     <>
-      <h2 className="text-center font-semibold text-2xl mb-6">
-        {!sweetFe ? "Let' s Create a sweet" : `${sweetFe.name}`}
-      </h2>
+      <div className="w-full md:w-[60%] px-4 mx-auto mb-6 mt-2 md:text-center relative">
+        <h2 className="text-center font-semibold text-2xl inline">
+          {!sweetFe ? "Let' s Create a sweet" : `${sweetFe.name}`}
+        </h2>
+        {sweetFe && (
+          <Link
+            href="/dashboard/sweets"
+            className="btn inline absolute top-0 right-2"
+          >
+            back
+          </Link>
+        )}
+      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-center md:w-[60%] px-1 mx-auto"
+        className="flex flex-col md:items-center md:w-[60%] px-1 mx-auto"
       >
         {!sweetFe && (
           <>
@@ -140,7 +150,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
 
         {fields.map((field, index) => {
           return (
-            <div key={index} className="w-[90%] md:w-[60%]">
+            <div key={index} className="md:w-[60%]">
               <div className="my-4 flex flex-row items-center justify-between">
                 <label htmlFor="name" className="form-label">
                   ingredient {index + 1}:
@@ -194,9 +204,11 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
             {!sweetFe ? "Create" : "update"}
           </button>
 
-          <button className="btn" type="button" onClick={handleReset}>
-            Reset
-          </button>
+          {!sweetFe && (
+            <button className="btn" type="button" onClick={handleReset}>
+              Reset
+            </button>
+          )}
         </div>
 
         {feedback && <div className="bg-color3 p-4">{feedback}</div>}

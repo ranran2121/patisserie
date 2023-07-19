@@ -25,7 +25,7 @@
 }
 
 .input-div {
-  @apply my-4 flex flex-row items-center w-[90%] md:w-[60%] justify-between;
+  @apply my-4 flex flex-row items-center  md:w-[60%] justify-between;
 }
 
 .form-control {
@@ -33,15 +33,19 @@
 }
 
 .form-input {
-  @apply border-2 border-color1 rounded-2xl p-2 basis-2/3;
+  @apply border-2 border-color1 rounded-2xl p-2 basis-3/4;
 }
 
 .form-label {
-  @apply basis-1/3 capitalize;
+  @apply basis-1/4 capitalize;
 }
 
 .btn {
-  @apply bg-color1 rounded-2xl px-4 py-2 uppercase;
+  @apply bg-color1 rounded-2xl px-4 py-[6px] uppercase;
+}
+
+.btn-red {
+  @apply bg-red-400 rounded-2xl px-4 py-1 uppercase;
 }
 
 .text-danger {
@@ -58,11 +62,11 @@
 }
 
 .login-btn {
-  @apply absolute bottom-2 right-2 bg-white p-1 rounded-xl;
+  @apply absolute bottom-2 right-2 bg-white p-1 rounded-xl text-black;
 }
 
 .row {
-  @apply border-2 border-color1 mt-1 rounded-lg p-2 hover:bg-blue-400;
+  @apply border-2 border-color1 mt-1 rounded-lg hover:bg-color6;
 }
 
 .first-row {

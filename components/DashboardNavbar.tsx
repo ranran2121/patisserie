@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { isActive } from "../lib/utils";
 
 const ROUTES = [
@@ -9,16 +9,16 @@ const ROUTES = [
 ];
 
 const DashboardNavbar = () => {
-  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <ul className="flex flex-row justify-center text-white gap-6">
-      {ROUTES.map((route, index) => {
+      {ROUTES.map((route) => {
         const { label, path } = route;
         return (
           <li
-            className={`m-2 uppercase ${isActive(router.pathname, path)}`}
-            key={index}
+            className={`m-2 uppercase ${isActive(pathname, path)}`}
+            key={label}
           >
             <Link href={path}>{label}</Link>
           </li>

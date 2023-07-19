@@ -1,17 +1,12 @@
 import { prisma } from "./prisma";
-import {
-  SweetType,
-  SweetCreateType,
-  IngredientType,
-  SweetUpdateType,
-} from "@/types";
-import { prepareIngredients } from "./utils";
+import { SweetType, SweetCreateType, SweetUpdateType } from "@/types";
+import { arrangeIngredients } from "./utils";
 
 export const getSweets = async (): Promise<SweetType[] | null> => {
   try {
     const sweets = await prisma.sweet.findMany({
       include: { ingredients: true },
-      orderBy: { id: "desc" },
+      orderBy: { madeAt: "desc" },
     });
 
     return sweets;
@@ -46,44 +41,29 @@ export const createSweet = async (
 
 export const updateSweet = async (
   data: SweetUpdateType
-): Promise<SweetType | null> => {
+): Promise<string | null> => {
   try {
     await prisma.ingredient.deleteMany({
-      where: { sweetId: parseFloat(data.id) },
+      where: { sweetId: parseInt(data.id) },
     });
 
-    const newIngredients = prepareIngredients(data.ingredients);
+    const newIngredients = arrangeIngredients(data.ingredients);
     await prisma.sweet.update({
-      where: { id: parseFloat(data.id) },
+      where: { id: parseInt(data.id) },
       data: {
         name: data.name,
-        price: data.price,
+        price: parseFloat(data.price),
         ingredients: {
           set: [],
-        },
-        madeAt: new Date(data.madeAt),
-      },
-      include: {
-        ingredients: true,
-      },
-    });
-
-    const sweet = await prisma.sweet.update({
-      where: { id: parseFloat(data.id) },
-      data: {
-        name: data.name,
-        price: data.price,
-        ingredients: {
           create: newIngredients,
         },
-        madeAt: new Date(data.madeAt),
       },
       include: {
         ingredients: true,
       },
     });
 
-    return sweet;
+    return "success";
   } catch (err) {
     console.error("error in updateSweet", err);
 
@@ -91,7 +71,7 @@ export const updateSweet = async (
   }
 };
 
-export const deleteSweet = async (id: number): Promise<string | null> => {
+export const deleteSweetById = async (id: number): Promise<string | null> => {
   try {
     await prisma.sweet.delete({
       where: { id },

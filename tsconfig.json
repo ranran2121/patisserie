@@ -18,7 +18,12 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/SweetForm.js"
+  ],
   "exclude": ["node_modules"],
   "ts-node": {
     "esm": true,

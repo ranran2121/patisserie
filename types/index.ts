@@ -25,6 +25,7 @@ export type SweetTypeFe = {
   price: number;
   madeAt: string;
   discount: number;
+  color?: string;
 };
 
 export type IngredientType = {
@@ -43,7 +44,7 @@ export type SweetCreateType = {
 export type SweetUpdateType = {
   name: string;
   ingredients: IngredientType[];
-  price: number;
+  price: string;
   madeAt: Date;
   quantity: string;
   id: string;
