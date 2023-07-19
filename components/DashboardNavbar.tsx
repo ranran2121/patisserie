@@ -5,6 +5,7 @@ import { isActive } from "../lib/utils";
 const ROUTES = [
   { path: "/", label: "home" },
   { path: "/dashboard", label: "dashboard" },
+  { path: "/dashboard/sweets", label: "list" },
 ];
 
 const DashboardNavbar = () => {

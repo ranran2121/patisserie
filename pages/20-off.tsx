@@ -80,22 +80,30 @@ const EightyOff = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
 export default EightyOff;
 
 export async function getServerSideProps(context: any) {
-  const sweets: SweetType[] | null = await getSweets();
   let sweetsFe: SweetTypeFe[] | [] = [];
-  if (sweets) {
-    sweetsFe = sweets
-      .map((sweet) => {
-        const sweetDate = format(sweet.madeAt, "u-MM-dd");
-        const discount = calcDiscount(sweetDate);
 
-        const sweetFe = { ...sweet, discount, madeAt: sweetDate };
+  try {
+    const sweets: SweetType[] | null = await getSweets();
 
-        return sweetFe;
-      })
-      .filter((sweet) => sweet.discount === 0.8);
+    if (sweets) {
+      sweetsFe = sweets
+        .map((sweet) => {
+          const sweetDate = format(sweet.madeAt, "u-MM-dd");
+          const discount = calcDiscount(sweetDate);
+
+          const sweetFe = { ...sweet, discount, madeAt: sweetDate };
+
+          return sweetFe;
+        })
+        .filter((sweet) => sweet.discount === 0.8);
+    }
+
+    return {
+      props: { sweetsFe },
+    };
+  } catch (err) {
+    return {
+      props: { sweetsFe },
+    };
   }
-
-  return {
-    props: { sweetsFe },
-  };
 }

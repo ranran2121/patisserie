@@ -82,22 +82,29 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
 export default Home;
 
 export async function getServerSideProps(context: any) {
-  const sweets: SweetType[] | null = await getSweets();
   let sweetsFe: SweetTypeFe[] | [] = [];
-  if (sweets) {
-    sweetsFe = sweets
-      .map((sweet) => {
-        const sweetDate = format(sweet.madeAt, "u-MM-dd");
-        const discount = calcDiscount(sweetDate);
+  try {
+    const sweets: SweetType[] | null = await getSweets();
 
-        const sweetFe = { ...sweet, discount, madeAt: sweetDate };
+    if (sweets) {
+      sweetsFe = sweets
+        .map((sweet) => {
+          const sweetDate = format(sweet.madeAt, "u-MM-dd");
+          const discount = calcDiscount(sweetDate);
 
-        return sweetFe;
-      })
-      .filter((sweet) => sweet.discount > 0);
+          const sweetFe = { ...sweet, discount, madeAt: sweetDate };
+
+          return sweetFe;
+        })
+        .filter((sweet) => sweet.discount > 0);
+    }
+
+    return {
+      props: { sweetsFe },
+    };
+  } catch (e) {
+    return {
+      props: { sweetsFe },
+    };
   }
-
-  return {
-    props: { sweetsFe },
-  };
 }

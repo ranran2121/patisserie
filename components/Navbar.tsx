@@ -28,7 +28,12 @@ const Navbar = () => {
         );
       })}
       {session && (
-        <li className={`m-2 ${isActive(router.pathname, PVTROUTE.path)}`}>
+        <li
+          className={`m-2 uppercase ${isActive(
+            router.pathname,
+            PVTROUTE.path
+          )}`}
+        >
           <Link href={PVTROUTE.path}>{PVTROUTE.label}</Link>
         </li>
       )}

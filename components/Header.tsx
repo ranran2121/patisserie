@@ -3,12 +3,13 @@ import Navbar from "./Navbar";
 import Image from "next/image";
 import img from "../assets/logo.jpeg";
 import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import DashboardNavbar from "./DashboardNavbar";
 
 const Header = () => {
   const { data: session } = useSession();
-  const router = useRouter();
+  const pathname = usePathname();
+  console.log("PP", pathname);
 
   return (
     <header className="flex flex-col items-center p-12 bg-color2 h-fit relative">
@@ -25,7 +26,7 @@ const Header = () => {
       <h1 className="mt-4 text-2xl font-semibold">
         Mary & Luana&apos;s patisserie
       </h1>
-      {router.pathname === "/dashboard" ? <DashboardNavbar /> : <Navbar />}
+      {pathname.includes("dashboard") ? <DashboardNavbar /> : <Navbar />}
 
       {!session ? (
         <Link href="/login" className="login-btn">

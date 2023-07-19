@@ -37,3 +37,17 @@ export const createSweet = async (
     throw new Error("error in createSweet");
   }
 };
+
+export const deleteSweet = async (id: number): Promise<string | null> => {
+  try {
+    await prisma.sweet.delete({
+      where: { id },
+    });
+
+    return "success";
+  } catch (err) {
+    console.error("error in deleteSweet", err);
+
+    throw new Error("error in deleteSweet");
+  }
+};
