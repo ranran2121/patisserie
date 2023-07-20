@@ -21,7 +21,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
   const defaultFormValues: FormDataType = {
     name: sweetFe?.name ? sweetFe.name : "",
     price: sweetFe?.price ? sweetFe.price : 0,
-    quantity: 1,
+    quantity: sweetFe?.quantity ? sweetFe.quantity : 1,
     ingredients: sweetFe?.ingredients ? sweetFe.ingredients : [{ name: "" }],
   };
 
@@ -93,30 +93,26 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col md:items-center md:w-[80%] px-1 mx-auto"
       >
-        {!sweetFe && (
-          <>
-            <div className="input-div">
-              <label htmlFor="quantity" className="form-label">
-                quantity:
-              </label>
-              <input
-                type="number"
-                min="1"
-                max="100"
-                step="1"
-                defaultValue={1}
-                {...register("quantity", { required: true })}
-                id="quantity"
-                className="form-input"
-              />
-            </div>
-            {errors.quantity && (
-              <small className="text-danger -mt-4">
-                this field is required
-              </small>
-            )}
-          </>
-        )}
+        <>
+          <div className="input-div">
+            <label htmlFor="quantity" className="form-label">
+              quantity:
+            </label>
+            <input
+              type="number"
+              min="1"
+              max="100"
+              step="1"
+              defaultValue={1}
+              {...register("quantity", { required: true })}
+              id="quantity"
+              className="form-input"
+            />
+          </div>
+          {errors.quantity && (
+            <small className="text-danger -mt-4">this field is required</small>
+          )}
+        </>
 
         <div className="input-div">
           <label htmlFor="sweetName" className="form-label">
