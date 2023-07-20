@@ -201,7 +201,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
           <span className="form-label">Add ingredient</span>
         </button>
 
-        <div className="my-4 flex flex-row gap-4">
+        <div className="my-4 flex flex-row gap-4 justify-center">
           <button className="btn" type="submit">
             save
           </button>

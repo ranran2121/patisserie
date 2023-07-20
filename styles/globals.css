@@ -37,7 +37,7 @@
 }
 
 .form-label {
-  @apply basis-1/4 capitalize;
+  @apply basis-1/4 capitalize text-sm md:text-lg;
 }
 
 .btn {
