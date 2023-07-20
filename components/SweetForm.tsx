@@ -3,6 +3,7 @@ import axios from "axios";
 import { useForm, useFieldArray } from "react-hook-form";
 import { IngredientType, SweetTypeFe } from "@/types";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type FormDataType = {
   name: string | undefined;
@@ -15,6 +16,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
   const { sweetFe } = props;
   const [feedback, setFeedback] = useState("");
   const [hasClicked, setHasClicked] = useState(false);
+  const router = useRouter();
 
   const defaultFormValues: FormDataType = {
     name: sweetFe?.name ? sweetFe.name : "",
@@ -56,7 +58,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
             data: { ...data, id: sweetFe.id, madeAt: sweetFe.madeAt },
           });
 
-          setFeedback("Sweet successfully updated");
+          router.push("/dashboard/sweets");
         }
       } catch (e) {
         setFeedback("Something went wrong...try later");
@@ -74,7 +76,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
 
   return (
     <>
-      <div className="w-full md:w-[60%] px-4 mx-auto mb-6 mt-2 md:text-center relative">
+      <div className="w-full md:w-[80%] px-4 mx-auto mb-6 mt-2 md:text-center relative">
         <h2 className="text-center font-semibold text-2xl inline">
           {!sweetFe ? "Let' s Create a sweet" : `${sweetFe.name}`}
         </h2>
@@ -89,7 +91,7 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col md:items-center md:w-[60%] px-1 mx-auto"
+        className="flex flex-col md:items-center md:w-[80%] px-1 mx-auto"
       >
         {!sweetFe && (
           <>
@@ -201,14 +203,14 @@ const SweetForm = (props: { sweetFe: SweetTypeFe | null }) => {
 
         <div className="my-4 flex flex-row gap-4">
           <button className="btn" type="submit">
-            {!sweetFe ? "Create" : "update"}
+            save
           </button>
 
-          {!sweetFe && (
-            <button className="btn" type="button" onClick={handleReset}>
-              Reset
-            </button>
-          )}
+          {/*  {!sweetFe && ( */}
+          <button className="btn" type="button" onClick={handleReset}>
+            Reset
+          </button>
+          {/* )} */}
         </div>
 
         {feedback && <div className="bg-color3 p-4">{feedback}</div>}
