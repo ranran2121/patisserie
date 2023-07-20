@@ -20,7 +20,10 @@ const Navbar = () => {
         const { label, path } = route;
         return (
           <li
-            className={`m-2 uppercase ${isActive(pathname, path)}`}
+            className={`m-2 uppercase text-sm md:text-xl ${isActive(
+              pathname,
+              path
+            )}`}
             key={label}
           >
             <Link href={path}>{label}</Link>
@@ -28,7 +31,12 @@ const Navbar = () => {
         );
       })}
       {session && (
-        <li className={`m-2 uppercase ${isActive(pathname, PVTROUTE.path)}`}>
+        <li
+          className={`m-2 uppercase text-sm md:text-xl ${isActive(
+            pathname,
+            PVTROUTE.path
+          )}`}
+        >
           <Link href={PVTROUTE.path}>{PVTROUTE.label}</Link>
         </li>
       )}

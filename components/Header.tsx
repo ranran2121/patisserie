@@ -22,7 +22,7 @@ const Header = () => {
           priority
         />
       </Link>
-      <h1 className="mt-4 text-2xl font-semibold">
+      <h1 className="mt-4 text-2xl font-semibold text-center">
         Mary & Luana&apos;s patisserie
       </h1>
       {pathname.includes("dashboard") ? <DashboardNavbar /> : <Navbar />}

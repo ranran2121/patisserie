@@ -17,7 +17,10 @@ const DashboardNavbar = () => {
         const { label, path } = route;
         return (
           <li
-            className={`m-2 uppercase ${isActive(pathname, path)}`}
+            className={`m-2 uppercase text-sm md:text-xl ${isActive(
+              pathname,
+              path
+            )}`}
             key={label}
           >
             <Link href={path}>{label}</Link>
