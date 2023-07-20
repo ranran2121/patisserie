@@ -6,6 +6,7 @@ export const sweets: SweetType[] = [
     name: "cheesecake",
     price: 5,
     madeAt: new Date(),
+    quantity: 1,
     ingredients: [
       {
         name: "sugar",
@@ -28,6 +29,7 @@ export const sweets: SweetType[] = [
     id: 2,
     name: "apple cake",
     price: 3,
+    quantity: 2,
     madeAt: new Date(),
     ingredients: [
       {

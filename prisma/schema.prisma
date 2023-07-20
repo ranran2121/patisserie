@@ -22,6 +22,7 @@ model Sweet {
   ingredients Ingredient[] 
   price Float
   madeAt DateTime @default(now())
+  quantity Int @default(1)
 }
 
 model Ingredient{

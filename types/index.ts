@@ -16,6 +16,7 @@ export type SweetType = {
   ingredients: IngredientType[];
   price: number;
   madeAt: Date;
+  quantity: number;
 };
 
 export type SweetTypeFe = {
@@ -26,6 +27,7 @@ export type SweetTypeFe = {
   madeAt: string;
   discount: number;
   color?: string;
+  quantity: number;
 };
 
 export type IngredientType = {
