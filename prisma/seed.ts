@@ -24,7 +24,13 @@ async function main() {
   for (let i = 0; i < sweets.length; i++) {
     await prisma.sweet.upsert({
       where: { id: sweets[i].id },
-      update: {},
+      update: {
+        name: sweets[i].name,
+        price: sweets[i].price,
+        madeAt: sweets[i].madeAt,
+        quantity: sweets[i].quantity,
+        ingredients: { create: sweets[i].ingredients },
+      },
       create: {
         name: sweets[i].name,
         price: sweets[i].price,
