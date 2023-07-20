@@ -3,10 +3,11 @@ import Sweet from "@/components/Sweet";
 import Modal from "@/components/Modal";
 import { SweetTypeFe } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import Message from "@/components/Message";
+import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const ShowcaseMobile = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
   const { sweetsFe } = props;
@@ -20,13 +21,14 @@ const ShowcaseMobile = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
     <div className="md:hidden">
       {sweetsFe.length > 0 && (
         <Swiper
-          modules={[Pagination]}
+          modules={[Pagination, Navigation]}
           spaceBetween={20}
           slidesPerView={1}
           direction="horizontal"
           slideToClickedSlide={true}
           centeredSlides={true}
           pagination={{ clickable: true }}
+          navigation={true}
         >
           {sweetsFe.map((sweet: SweetTypeFe, index) => {
             return (
@@ -47,7 +49,8 @@ const ShowcaseMobile = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
           })}
         </Swiper>
       )}
-      {showModal && <Modal closeModal={closeModal} sweet={sweet} />}
+      {showModal && <Modal closeModal={closeModal} sweet={sweet} />}{" "}
+      {sweetsFe.length == 0 && <Message message={"baking in progress"} />}
     </div>
   );
 };

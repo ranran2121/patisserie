@@ -2,7 +2,6 @@ import { getSweets } from "@/lib/sweets_crud";
 import { format } from "date-fns";
 import { SweetType, SweetTypeFe } from "@/types";
 import { calcDiscount } from "../lib/utils";
-import Message from "@/components/Message";
 import ShowcaseMobile from "@/components/ShowcaseMobile";
 import Showcase from "@/components/Showcase";
 
@@ -15,7 +14,6 @@ const Home = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
       <ShowcaseMobile sweetsFe={sweetsFe} />
       {/* Layout for tablet and desktop */}
       <Showcase sweetsFe={sweetsFe} />
-      {sweetsFe.length == 0 && <Message message={"baking in progress"} />}
     </>
   );
 };
