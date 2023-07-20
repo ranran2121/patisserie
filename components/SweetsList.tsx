@@ -31,7 +31,7 @@ const SweetsList = (props: { sweetsFe: SweetTypeFe[] }) => {
           const { id, name, madeAt, price, color } = sweet;
 
           return (
-            <tr className={`row ${color}`} key={id}>
+            <tr className="row" style={{ backgroundColor: color }} key={id}>
               <td className="font-bold">{index + 1}</td>
               <td className="capitalize">{name}</td>
               <td>{price}</td>

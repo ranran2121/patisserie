@@ -31,8 +31,8 @@ export const arrangeIngredients = (list: listType[]) => {
 };
 
 export const choseColor = (number: number) => {
-  if (number === 0) return "bg-slate-300";
-  if (number === 0.2) return "bg-color6";
-  if (number === 0.8) return "bg-color7";
-  return "";
+  if (number === 0) return "#cbd5e1";
+  if (number === 0.2) return "#FED7AA";
+  if (number === 0.8) return "#FCA5A5";
+  return "#fff";
 };
