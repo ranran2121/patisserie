@@ -17,6 +17,7 @@ const ShowcaseMobile = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
   const closeModal = () => {
     setShowModal(false);
   };
+
   return (
     <div className="md:hidden">
       {sweetsFe.length > 0 && (
@@ -32,19 +33,13 @@ const ShowcaseMobile = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
         >
           {sweetsFe.map((sweet: SweetTypeFe, index) => {
             return (
-              <div
-                key={String(sweet.id) + sweet.name}
-                id={String(sweet.id)}
-                onClick={() => {
-                  setSweet(sweet);
-                  setShowModal(true);
-                }}
-                className="cursor-pointer"
-              >
-                <SwiperSlide>
-                  <Sweet sweet={sweet} />
-                </SwiperSlide>
-              </div>
+              <SwiperSlide key={sweet.id} style={{ zIndex: 0 }}>
+                <Sweet
+                  sweet={sweet}
+                  setShowModal={setShowModal}
+                  setSweet={setSweet}
+                />
+              </SwiperSlide>
             );
           })}
         </Swiper>
