@@ -72,3 +72,20 @@
 .first-row {
   @apply border-2 border-color1  p-2 rounded-lg bg-color1 text-white font-semibold;
 }
+
+/* override swiper css */
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  background: #f97316;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  @apply text-color1;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  @apply text-color1;
+}
