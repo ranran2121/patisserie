@@ -28,12 +28,14 @@ const List = (props: {
         <h2 className="text-center font-semibold text-2xl inline">
           Our sweets
         </h2>
-        <button
-          onClick={handleOnClick}
-          className="btn inline absolute top-0 right-2"
-        >
-          Remove stale
-        </button>
+        {staleSweets.length > 0 && (
+          <button
+            onClick={handleOnClick}
+            className="btn inline absolute top-0 right-2"
+          >
+            Remove stale
+          </button>
+        )}
       </div>
 
       <SweetsList sweetsFe={sweetsFe} />

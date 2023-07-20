@@ -15,10 +15,10 @@ export function calcDiscount(date: string): number {
     return 1;
   }
   if (hoursPassed >= 24 && hoursPassed < 48) {
-    return 0.2;
+    return 0.8;
   }
   if (hoursPassed >= 48 && hoursPassed < 72) {
-    return 0.8;
+    return 0.2;
   }
   return 0;
 }
@@ -32,7 +32,7 @@ export const arrangeIngredients = (list: listType[]) => {
 
 export const choseColor = (number: number) => {
   if (number === 0) return "#cbd5e1";
-  if (number === 0.2) return "#FED7AA";
-  if (number === 0.8) return "#FCA5A5";
+  if (number === 0.2) return "#FCA5A5";
+  if (number === 0.8) return "#FED7AA";
   return "#fff";
 };
