@@ -11,7 +11,7 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="flex flex-col items-center p-12 bg-color2 h-fit relative">
+    <header className="flex flex-col items-center py-8 bg-color2 h-fit relative">
       <Link href="/">
         <Image
           src={img}

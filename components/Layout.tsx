@@ -15,7 +15,9 @@ const roboto = Roboto({
 });
 const Layout: FC<LayoutProp> = ({ children }) => {
   return (
-    <div className={roboto.className}>
+    <div
+      className={`${roboto.className} min-h-screen flex flex-col justify-start`}
+    >
       <Header />
       {children}
       <Footer />

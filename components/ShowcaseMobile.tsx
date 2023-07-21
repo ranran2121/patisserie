@@ -34,11 +34,14 @@ const ShowcaseMobile = (props: { sweetsFe: [] | SweetTypeFe[] }) => {
           {sweetsFe.map((sweet: SweetTypeFe, index) => {
             return (
               <SwiperSlide key={sweet.id} style={{ zIndex: 0 }}>
-                <Sweet
-                  sweet={sweet}
-                  setShowModal={setShowModal}
-                  setSweet={setSweet}
-                />
+                <div
+                  onClick={() => {
+                    setSweet(sweet);
+                    setShowModal(true);
+                  }}
+                >
+                  <Sweet sweet={sweet} />
+                </div>
               </SwiperSlide>
             );
           })}

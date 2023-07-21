@@ -1,6 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="h-10 bg-color1 text-white text-center w-full pt-2">
+    <footer
+      className="h-10 bg-color1 text-white text-center w-full pt-2"
+      style={{ marginTop: "auto" }}
+    >
       Do you like the website?
       <a
         href="mailto:m.hacke@example.com"
