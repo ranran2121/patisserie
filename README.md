@@ -8,19 +8,25 @@
 nvm use
 ```
 
-3.Start the database container:
+3.Install dependencies:
+
+```bash
+npm install
+```
+
+4.Start the database container:
 
 ```bash
 npm run docker-up
 ```
 
-4.After the database container is started and running:
+5.After the database container is started and running:
 
 ```bash
 npm run db-up
 ```
 
-5.Start the application:
+6.Start the application:
 
 ```bash
 npm run dev
