@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Sweet from "@/components/Sweet";
 import Modal from "@/components/Modal";
 import { SweetTypeFe } from "@/types";

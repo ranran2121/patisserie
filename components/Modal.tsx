@@ -1,3 +1,4 @@
+import React from "react";
 import { SweetTypeFe } from "@/types";
 
 const Modal = (props: {

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import { Roboto } from "next/font/google";

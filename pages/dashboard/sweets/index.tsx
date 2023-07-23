@@ -1,3 +1,4 @@
+import React from "react";
 import SweetsList from "@/components/SweetsList";
 import { getSweets } from "@/lib/sweets_crud";
 import { calcDiscount, choseColor } from "@/lib/utils";

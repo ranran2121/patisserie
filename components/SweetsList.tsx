@@ -1,4 +1,4 @@
-import { choseColor } from "@/lib/utils";
+import React from "react";
 import { SweetTypeFe } from "@/types";
 import axios from "axios";
 import Link from "next/link";

@@ -3,6 +3,7 @@ import Image from "next/image";
 import img from "../assets/general_cake.png";
 import { SweetTypeFe } from "@/types";
 import Badge from "./Badge";
+import React from "react";
 
 const Sweet = (props: { sweet: SweetTypeFe }) => {
   const { sweet } = props;

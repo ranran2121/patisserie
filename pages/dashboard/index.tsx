@@ -1,3 +1,4 @@
+import React from "react";
 import SweetForm from "@/components/SweetForm";
 import { getSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
